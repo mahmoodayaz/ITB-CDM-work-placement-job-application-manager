@@ -150,8 +150,8 @@ class StudentController extends Controller
         $employedstudents = $this->getDoctrine()
         ->getRepository('AppBundle:jobs') 
         ->findAll(); 
+        $jobs =  array();
         if(count($employedstudents) > 0){
-            $jobs =  array();
             foreach ($employedstudents as $key => $value) {
             # code... 
                 $deadlinedate =  $value->getDeadline();

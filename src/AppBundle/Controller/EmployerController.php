@@ -49,14 +49,14 @@ class EmployerController extends Controller
                 $job_obj = $this->getDoctrine()
                 ->getRepository('AppBundle:job_applicants')
                     //fetching data from db
-                ->findBy(array('jobId' => $value->getid(), 'status' => '1' ));
+                ->findBy(array('jobId' => $value->getid() ));
                 $applicants  =  array();
                 foreach ($job_obj as $key => $value2) {
                         # code...
                     $student = $this->getDoctrine()
                     ->getRepository('AppBundle:student')
                         //fetching data from db
-                    ->findOneBy(array('id' => $value2->getStudentId()));
+                    ->findOneBy(array('id' => $value2->getStudentId(), 'status' => '1'));
                     array_push($applicants, array('student_id' => $student->getid() ,
                       'name' => $student->getName()  ,  'email'  => $student->getEmail() ,
                       'phone'  =>  $student->getPhone(), 'address' => $student->getAddress(),

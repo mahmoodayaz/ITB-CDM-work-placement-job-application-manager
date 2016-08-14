@@ -89,11 +89,14 @@ class LecturerController extends Controller
     public function lecture_applicantsIdAction(Request $request, $id)
     {
 
-
+        $em = $this->getDoctrine()->getManager();
+        $student = $em->getRepository('AppBundle:student')
+        ->findOneBy(array('id' => (int)$id));
+        $student->setStatus("1");
+        $em->persist($student);
+        $em->flush();
+        return $this->redirectToRoute("lecturer_applicants");   
     }
-
-
-
 
     /**
      * @Route("/lecturer/students", name="lecturer_students")
@@ -141,7 +144,6 @@ class LecturerController extends Controller
     	$comment_general->handleRequest($request);
     	if($comment_general->isSubmitted() && $comment_general->isValid()){
     		$comment = $comment_general['comment']->getData();
-            $comment_all = new comment_all();
             $comment_all->setLecturerId($this->get('session')->get('id'));
             $comment_all->setComment($comment);
             $comment_all->setType("general");
@@ -159,14 +161,12 @@ class LecturerController extends Controller
     	$comment_section->handleRequest($request);
     	if($comment_section->isSubmitted() && $comment_section->isValid()){
     		$comment = $comment_section['comment']->getData();
-
-            $comment_all = new comment_all();
-            $comment_all->setLecturerId($this->get('session')->get('id'));
-            $comment_all->setComment($comment);
-            $comment_all->setType("specific");
-            $comment_all->setDate(new \Datetime);
+            $comment_all2->setLecturerId($this->get('session')->get('id'));
+            $comment_all2->setComment($comment);
+            $comment_all2->setType("specific");
+            $comment_all2->setDate(new \Datetime);
             $em = $this->getDoctrine()->getManager();
-            $em->persist($comment_all);
+            $em->persist($comment_all2);
             $em->flush();
 
 
@@ -204,14 +204,37 @@ class LecturerController extends Controller
     	$comment_general->handleRequest($request);
     	if($comment_general->isSubmitted() && $comment_general->isValid()){
     		$comment = $comment_general['comment']->getData();
+            $comment_individual->setLecturerId($this->get('session')->get('id'));
+            $comment_individual->setComment($comment);
+            $comment_individual->setType("general");
+            $comment_individual->setUserId($id);
+            $comment_individual->setDate(new \Datetime);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment_individual);
+            $em->flush();
+
+
     	}
-    	$comment_section = $this->createFormBuilder($comment_individual)
+
+
+        $comment_individual2 = new comments_individual();
+    	$comment_section = $this->createFormBuilder($comment_individual2)
     	->add('comment', TextType::class, array('attr' => array('class' => 'form-control', 'placeholder' => '', 'style' => 'margin-bottom:15px', 'required' => 'required')))
     	->add('Submit', SubmitType::class, array('label' => 'Submit', 'attr' => array('class' => 'btn btn-primary', 'placeholder' => '', 'style' => 'margin-bottom:15px')))
     	->getForm();
     	$comment_section->handleRequest($request);
     	if($comment_section->isSubmitted() && $comment_section->isValid()){
     		$comment = $comment_section['comment']->getData();
+            $comment_individual2->setLecturerId($this->get('session')->get('id'));
+            $comment_individual2->setComment($comment);
+            $comment_individual2->setUserId($id);
+            $comment_individual2->setType("specific");
+            $comment_individual2->setDate(new \Datetime);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment_individual2);
+            $em->flush();
+
+
     	}
 
     	return $this->render('lecturer/student_detail.html.twig', array(
