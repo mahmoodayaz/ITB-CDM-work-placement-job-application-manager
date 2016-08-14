@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+    Name: Mehmood Ayaz;
+    Course: Web Software Engineering
+    Project: ITB CDM work placement job application manager
+-->
+<head>
+    <title>Mehmood-ITB Project</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME ICONS  -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <strong>Email: </strong>Mehmood_ayaz2001@yahoo.com
+                    &nbsp;&nbsp;
+                    <strong>Phone: </strong>+353-86-278-6786
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- HEADER END-->
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/img/itb_logo.gif" />
+                </a>
+            </div>
+            <div class="left-div">
+                <div class="user-settings-wrapper">
+                    <ul class="nav">
+                        <li class="dropdown">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGO HEADER END-->
+    <section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/">Lecturer Login</a></li>
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/studentlogin">Student Login</a></li>
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/employerlogin">Employer Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- MENU SECTION END-->
+    <div class="content-wrapper">
+
+     <!-- CONTENT-WRAPPER SECTION START  -->
+        <div class="container" style="width:420px;">
+            <div class="row">
+                <div class="col-md-12">
+                    {% if status != 'first' %}
+                    <div class="alert alert-danger">
+                      <strong>Error! </strong> {{ status }} 
+                    </div>
+                    {% endif %}
+                    <h4 class="page-head-line">Dear <u>{{ user }}</u> Please Login To Enter </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{form_start(form)}}
+                    {{form_widget(form)}}
+                    {{form_end(form)}}
+               </div>
+           </div>
+       </div>
+    <!-- CONTENT-WRAPPER SECTION END  -->
+    </div>
+
+
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    &copy; 2016 ITB Placement Project | By : Mehmood
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END-->
+    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.11.1.js"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="assets/js/bootstrap.js"></script>
+</body>
+</html>

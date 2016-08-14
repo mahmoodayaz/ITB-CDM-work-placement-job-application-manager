@@ -1,0 +1,130 @@
+{% include 'default/header.html.twig' %}
+
+{# CONTENT-WRAPPER SECTION START #}
+<div class="container"  >
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="page-head-line">Unemployed Students</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!--   Kitchen Sink -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Designation</th>
+                  <th>Address</th>
+                  <th>CV</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for count,data in unemployed %}
+                <tr>
+                <td> {{ count+1 }} </td>
+                <td><img width="120px" src="{{ app.request.getSchemeAndHttpHost() }}/assets/img/{{ data['img'] }}">  </td>
+                <td> {{ data['name'] }} </td>
+                <td> {{ data['email'] }} </td>
+                <td> {{ data['phone'] }} </td>
+                <td> {{ data['designation'] }} </td>
+                <td> {{ data['address'] }} </td>
+                <td> <a href="{{ app.request.getSchemeAndHttpHost() }}/lecturer/student/{{ data['id'] }}">View CV</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- End  Kitchen Sink -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="page-head-line">Employed Students</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!--   Kitchen Sink -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Designation</th>
+                  <th>Address</th>
+                  <th>CV</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for count,data in employed %}
+                <tr>
+                <td> {{ count+1 }} </td>
+                <td><img width="120px" src="{{ app.request.getSchemeAndHttpHost() }}/assets/img/{{ data['img'] }}"> </td>
+                <td> {{ data['name'] }} </td>
+                <td> {{ data['email'] }} </td>
+                <td> {{ data['phone'] }} </td>
+                <td> {{ data['designation'] }} </td>
+                <td> {{ data['address'] }} </td>
+                <td> <a href="{{ app.request.getSchemeAndHttpHost() }}/lecturer/student/{{ data['id'] }}">View CV</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- End  Kitchen Sink -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="page-head-line">Post a comment to all students about CVs in general</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+       <div class="panel-body">
+         {{form_start(comment_general)}}
+         {{form_widget(comment_general)}}
+         {{form_end(comment_general)}}
+       </div>
+     </div>
+   </div>
+ </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="page-head-line">Post a comment to all students about a particular section of a CV</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+       <div class="panel-body">
+         {{form_start(comment_section)}}
+         {{form_widget(comment_section)}}
+         {{form_end(comment_section)}}
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+{# CONTENT-WRAPPER SECTION END #}
+
+{% include 'default/footer.html.twig' %}

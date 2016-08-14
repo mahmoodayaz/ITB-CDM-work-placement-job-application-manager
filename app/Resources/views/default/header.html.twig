@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+    Name: Mehmood Ayaz;
+    Course: Web Software Engineering;
+    Project: ITB CDM work placement job application manager;
+-->
+<head>
+    <title>Mehmood-ITB Project</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="{{ app.request.getSchemeAndHttpHost() }}/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME ICONS  -->
+    <link href="{{ app.request.getSchemeAndHttpHost() }}/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="{{ app.request.getSchemeAndHttpHost() }}/assets/css/style.css" rel="stylesheet" />
+</head>
+<body> 
+    {% if app.session.get('name') is defined %}
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    Welcome <strong>{{ app.session.get('name') }} </strong>to ITB placement Portal
+                </div>
+
+            </div>
+        </div>
+    </header>
+    {% endif %}
+    <!-- HEADER END-->
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="{{ app.request.getSchemeAndHttpHost() }}/assets/img/itb_logo.gif" />
+                </a>
+            </div>
+            <div class="left-div">
+                <div class="user-settings-wrapper">
+                    <ul class="nav">
+                        <li class="dropdown">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGO HEADER END-->
+    <section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            {% if app.session.get('type') == "lecturer" %}
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/lecturer/students">View Students</a></li>
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/lecturer/applicants">View Applied Applicants Jobs</a></li>
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/lecturer/student_new">Create Student</a></li>
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/lecturer/job/new">Create job</a></li>
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/lecturer/employer/new">Create Employer</a></li>
+                            {% elseif app.session.get('type') == "employedstudent" %}
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/student/cv">View CV Details</a></li>
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/student/jd">View Job Description</a></li>
+                            {% elseif app.session.get('type') == "unemployedstudent" %}
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/student/comments">View Comments</a></li>
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/student/jobs">View Jobs</a></li>
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/student/cv/update">Update CV</a></li>
+                            {% elseif app.session.get('type') == "employer" %}
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/employer/applicants">View Applicants</a></li>
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/employer/job/send">Send Job to Lecturer</a></li>
+                            {% endif %}
+                            {% if app.session.get('islogin') == "true" %}
+                            <li><a href="{{ app.request.getSchemeAndHttpHost() }}/logout">log Out</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- MENU SECTION END-->
+    <div class="content-wrapper">

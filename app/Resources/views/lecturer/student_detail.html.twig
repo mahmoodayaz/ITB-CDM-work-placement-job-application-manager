@@ -1,0 +1,56 @@
+{% include 'default/header.html.twig' %}
+
+{# CONTENT-WRAPPER SECTION START #}
+<div class="container"  >
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="page-head-line">{{ student_name }} CV</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!--   Kitchen Sink -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+            {{ cv | raw }}
+        </div>
+      </div>
+      <!-- End  Kitchen Sink -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="page-head-line">Post a comment to <strong>{{ student_name }}</strong> about his CV in general</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+       <div class="panel-body">
+         {{form_start(comment_general)}}
+         {{form_widget(comment_general)}}
+         {{form_end(comment_general)}}
+       </div>
+     </div>
+   </div>
+ </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="page-head-line">Post a comment to  <strong>{{ student_name }}</strong>  about a particular section of a his CV</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+       <div class="panel-body">
+         {{form_start(comment_section)}}
+         {{form_widget(comment_section)}}
+         {{form_end(comment_section)}}
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+{# CONTENT-WRAPPER SECTION END #}
+
+{% include 'default/footer.html.twig' %}

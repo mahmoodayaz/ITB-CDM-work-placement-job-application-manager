@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="{{ app.request.getSchemeAndHttpHost() }}/assets/css/bootstrap.css" rel="stylesheet" /> 
+</head>
+<body> 
+  <div class="content-wrapper">
+
+  <div class="container" style="width:600px;">
+      <div class="row">
+        <div class="col-md-12">
+         {{ cv | raw }}
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <script src="{{ app.request.getSchemeAndHttpHost() }}/assets/js/jquery-1.11.1.js"></script>
+  <!-- BOOTSTRAP SCRIPTS  -->
+  <script src="{{ app.request.getSchemeAndHttpHost() }}/assets/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+{% include 'default/header.html.twig' %}
+
+    {# CONTENT-WRAPPER SECTION START #}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="page-head-line">General Comments for all Students </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-striped projects">
+                      <thead>
+                        <tr>
+                          <th style="width: 1%">#</th>
+                          <th>Comment</th>
+                          <th style="width: 25%">Date</th>
+                       </tr>
+                      </thead>
+                      <tbody>
+                        {% for key,value in comments_general_all %}
+                          <tr>
+                              <td>{{ key+1 }}</td>
+                              <td>{{ value['comment'] }}</td>
+                              <td>{{ value['date'] | date('F j, Y g:i a')  }}</td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+           </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="page-head-line">General Comments for You</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-striped projects">
+                      <thead>
+                        <tr>
+                          <th style="width: 1%">#</th>
+                          <th>Comment</th>
+                          <th style="width: 25%">Date</th>
+                       </tr>
+                      </thead>
+                      <tbody>
+                        {% for key,value in comments_general_ind %}
+                          <tr>
+                              <td>{{ key+1 }}</td>
+                              <td>{{ value['comment'] }}</td>
+                              <td>{{ value['date'] | date('F j, Y g:i a')  }}</td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+           </div> 
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="page-head-line">Individual Comments for Specific Section to All Students </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-striped projects">
+                      <thead>
+                        <tr>
+                          <th style="width: 1%">#</th>
+                          <th>Comment</th>
+                          <th style="width: 25%">Date</th>
+                       </tr>
+                      </thead>
+                      <tbody>
+                        {% for key,value in comments_specific_all %}
+                          <tr>
+                              <td>{{ key+1 }}</td>
+                              <td>{{ value['comment'] }}</td>
+                              <td>{{ value['date'] | date('F j, Y g:i a')  }}</td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="page-head-line">Individual Comments for Specific Section to You</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-striped projects">
+                      <thead>
+                        <tr>
+                          <th style="width: 1%">#</th>
+                          <th>Comment</th>
+                          <th style="width: 25%">Date</th>
+                       </tr>
+                      </thead>
+                      <tbody>
+                        {% for key,value in comments_specific_ind %}
+                          <tr>
+                              <td>{{ key+1 }}</td>
+                              <td>{{ value['comment'] }}</td>
+                              <td>{{ value['date'] | date('F j, Y g:i a')  }}</td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+           </div>
+       </div>
+   {# CONTENT-WRAPPER SECTION END #}
+ 
+{% include 'default/footer.html.twig' %}

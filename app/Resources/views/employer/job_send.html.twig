@@ -1,0 +1,28 @@
+{% include 'default/header.html.twig' %}
+
+{# CONTENT-WRAPPER SECTION START #}
+<div class="container" >
+{% if status=="success" %}
+  <div class="col-md-offset-3 col-md-6">
+    <div class="row">
+      <div class="alert alert-success"> <strong>Success!</strong> Congratulations Data Saved. </div>
+    </div>
+  </div>
+  {%  endif %}
+
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <h4 class="page-head-line">Create New Job </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      {{form_start(job_form)}}
+      {{form_widget(job_form)}}
+      {{form_end(job_form)}}
+    </div>
+  </div>
+</div>
+{# CONTENT-WRAPPER SECTION END #}
+
+{% include 'default/footer.html.twig' %}
